@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     borderRadius: 50,
     marginLeft: 20,
-    
+
   },
   input: {
     width: '100%',
