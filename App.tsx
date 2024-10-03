@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, SafeAreaView, TextInput, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, FlatList, SafeAreaView, TextInput, TouchableOpacity, TouchableHighlight, Image } from 'react-native';
 import { Picker } from "@react-native-picker/picker";
 import { dishDetails } from './type/task.Object';
 import { Alert } from 'react-native';
-
+import React from 'react';
 export default function App() {
 
   const [dish, setDish] = useState<dishDetails[]>([]);
@@ -49,10 +49,10 @@ export default function App() {
 
     <SafeAreaView style={styles.itemContainer}>
       <View style={styles.headingContainer}>
+        <Image source={require('./_images/mast.png')} style={styles.img}></Image>
         <Text style={styles.heading}> Dine with Cristofel</Text>
       </View>
       <View style={styles.summaryContainer}>
-        <Text style={styles.summaryHeading}> Today's summary:</Text>
         <View >
           <Text style={styles.summaryText}>Total Dishes: {totalDishes} </Text>
         </View>
@@ -66,15 +66,23 @@ export default function App() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.container}>
+            <Text style={styles.OtherDetail}>{item.course_Type} </Text>
             <Text style={styles.dishName}>Dish Name: {item.dish_Name}</Text>
             <Text style={styles.OtherDetails}>Description: {item.description} min </Text>
-            <Text style={styles.OtherDetails}> Course type: {item.course_Type} </Text>
             <Text style={styles.OtherDetails}>Price: {item.Price} </Text>
           </View>
         )}
       ></FlatList>
       <View style={styles.userInputView} >
         <Text style={styles.heading}>Add menu items</Text>
+        <Picker
+          selectedValue={courseType}
+          onValueChange={(itemValeu) => setType(itemValeu)}
+          style={styles.input}>
+          {CourseType.map((courseType) => (
+            <Picker.Item label={courseType} value={courseType} key={courseType} />
+          ))}
+        </Picker>
         <TextInput style={styles.input}
           placeholder='Dish name'
           value={dishName}
@@ -86,15 +94,6 @@ export default function App() {
           value={description}
           onChangeText={setDescription}>
         </TextInput>
-
-        <Picker
-          selectedValue={courseType}
-          onValueChange={(itemValeu) => setType(itemValeu)}
-          style={styles.input}>
-          {CourseType.map((courseType) => (
-            <Picker.Item label={courseType} value={courseType} key={courseType} />
-          ))}
-        </Picker>
         <TextInput
           style={styles.input}
           placeholder='Price'
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#febd00',
+    backgroundColor: '#ffd5a9',
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 10,
@@ -137,9 +136,13 @@ const styles = StyleSheet.create({
   },
   dishName: {
     fontSize: 30,
+    fontWeight: "semibold",
+    textAlign: "left",
+  },
+  OtherDetail: {
+    fontSize: 35,
+    textAlign: "left",
     fontWeight: "bold",
-
-
   },
   heading: {
     fontSize: 30,
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
     color: "#b54c29",
   },
   OtherDetails: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: "left",
   },
   seprator: {
@@ -156,16 +159,19 @@ const styles = StyleSheet.create({
   userInputView: {
     alignItems: 'center',
     justifyContent: 'flex-start',
-    width: 500,
-    height: 370,
+    width: '100%',
+    height: 380,
     marginVertical: 5,
     backgroundColor: '#ded9d7',
     padding: 10,
     marginTop: 120,
     marginBottom: 40,
     borderRadius: 50,
-    marginLeft: 20,
-
+  },
+  img: {
+    height: 40,
+    width: 40,
+    justifyContent: 'flex-start',
   },
   input: {
     width: '100%',
@@ -203,14 +209,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     width: '100%',
   },
-  summaryHeading: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 15,
-    color: "#b54c29",
-    fontSize: 30,
 
-  },
+
   summaryText: {
     fontSize: 20,
     fontWeight: 'bold'
@@ -222,4 +222,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  img: {
+    width: 60,
+    height: 60,
+    marginRight: 500,
+    marginTop: 10,
+  },
 });
+
