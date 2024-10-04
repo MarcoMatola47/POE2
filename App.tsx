@@ -7,15 +7,15 @@ import { Alert } from 'react-native';
 import React from 'react';
 export default function App() {
 
-  const [dish, setDish] = useState<dishDetails[]>([]);
-  const [dishName, setDishName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [courseType, setType] = useState<string>('');
-  const [price, setPrice] = useState<string>('');
+  const [dish, setDish] = useState<dishDetails[]>([]); // Array containg the list of dish's 
+  const [dishName, setDishName] = useState<string>('');// holding disname
+  const [description, setDescription] = useState<string>('');// holding dish description
+  const [courseType, setType] = useState<string>('');// holding dish type 
+  const [price, setPrice] = useState<string>(''); // holding dish price
 
 
-  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Dessert'];
-  const handleSubmit = () => {
+  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Dessert']; // dish types
+  const handleSubmit = () => {//  submit the new details the user will input
     if (dishName && description && courseType && price && parseInt(price) > 0) {
       const newWorkout: dishDetails = {
         dish_Name: dishName,
@@ -24,6 +24,7 @@ export default function App() {
         Price: parseInt(price)
 
       };
+      // add the details
       setDish([...dish, newWorkout]);
       setDishName('');
       setDescription('');
@@ -31,14 +32,14 @@ export default function App() {
       setPrice('');
     } else if (parseInt(price) <= 0) {
       Alert.alert("Incorrect input", "Price need to be greater than 0", [
-        { text: "OK" },
+        { text: "OK" }, // make sure that the user input number greater than 0
       ]);
     }
 
     else {
       Alert.alert("Incomplete form",
         "Please fill all the fields", [
-        { text: "OK" }
+        { text: "OK" } // make sure that the user full fill all the spaces 
       ]);
 
 
@@ -46,7 +47,7 @@ export default function App() {
   }
   const totalDishes = dish.length
   return (
-
+    // display for the user input
     <SafeAreaView style={styles.itemContainer}>
       <View style={styles.headingContainer}>
         <Image source={require('./_images/mast.png')} style={styles.img}></Image>
@@ -72,6 +73,7 @@ export default function App() {
             <Text style={styles.OtherDetails}>Price: {item.Price} </Text>
           </View>
         )}
+      //ends here
       ></FlatList>
       <View style={styles.userInputView} >
         <Text style={styles.heading}>Add menu items</Text>
@@ -109,7 +111,7 @@ export default function App() {
     </SafeAreaView>
   );
 };
-
+// style more harder than css
 const styles = StyleSheet.create({
   headingContainer: {
     alignItems: 'center',
@@ -223,8 +225,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   img: {
-    width: 60,
-    height: 60,
+    width: 65,
+    height: 65,
     marginRight: 500,
     marginTop: 10,
   },
