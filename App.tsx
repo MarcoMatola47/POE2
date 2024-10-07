@@ -72,7 +72,7 @@ export default function App() {
           <View style={styles.container}>
             <Text style={styles.OtherDetail}>{item.course_Type} </Text>
             <Text style={styles.dishName}>Dish Name: {item.dish_Name}</Text>
-            <Text style={styles.OtherDetails}>Description: {item.description} min </Text>
+            <Text style={styles.OtherDetails}>Description: {item.description}</Text>
             <Text style={styles.OtherDetails}>Price: R{item.Price} </Text>
           </View>
         )}
