@@ -17,7 +17,7 @@ export default function App() {
   const [price, setPrice] = useState<string>(''); // holding dish price
 
 
-  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Sides', 'Dessert']; // dish types
+  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Dessert']; // dish types
   const handleSubmit = () => {//  submit the new details the user will input
     if (dishName && description && courseType && price && parseInt(price) > 0) {
       const newWorkout: dishDetails = {
@@ -54,7 +54,7 @@ export default function App() {
     <SafeAreaView style={styles.itemContainer}>
       <View style={styles.headingContainer}>
         <Image source={require('./_images/mast.png')} style={styles.img}></Image>
-        <Text style={styles.heading}> Dine with Cristofel</Text>
+        <Text style={styles.heading}> Dine with Christoffel</Text>
       </View>
       <View style={styles.summaryContainer}>
         <View >
@@ -73,7 +73,7 @@ export default function App() {
             <Text style={styles.OtherDetail}>{item.course_Type} </Text>
             <Text style={styles.dishName}>Dish Name: {item.dish_Name}</Text>
             <Text style={styles.OtherDetails}>Description: {item.description} min </Text>
-            <Text style={styles.OtherDetails}>Price: {item.Price} </Text>
+            <Text style={styles.OtherDetails}>Price: R{item.Price} </Text>
           </View>
         )}
       //ends here
@@ -227,12 +227,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  img: {
-    width: 65,
-    height: 65,
-    marginRight: 500,
-    marginTop: 10,
-  },
+
 });
 // ends here
 
