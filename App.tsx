@@ -1,3 +1,6 @@
+//<!--The IIE,2024.MAST5112/d/p/w MODULE MANUAL/GUIDE. 2012-->
+//fitness tracker app 
+//navigation version
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, SafeAreaView, TextInput, TouchableOpacity, TouchableHighlight, Image } from 'react-native';
@@ -14,7 +17,7 @@ export default function App() {
   const [price, setPrice] = useState<string>(''); // holding dish price
 
 
-  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Dessert']; // dish types
+  const CourseType = ['Appetisers', 'Main Course', 'Salad', 'Sides', 'Dessert']; // dish types
   const handleSubmit = () => {//  submit the new details the user will input
     if (dishName && description && courseType && price && parseInt(price) > 0) {
       const newWorkout: dishDetails = {
@@ -231,4 +234,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+// ends here
 
